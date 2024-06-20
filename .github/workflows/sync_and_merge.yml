@@ -12,14 +12,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          persist-credentials: false  # 取消自动保存认证
-          fetch-depth: 0  # 获取完整的 git 历史记录
 
       - name: Set up Git
         run: |
-          git config --local user.email "shuohao@126.com"
-          git config --local user.name "shuohao"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
 
       - name: Add upstream repository
         run: |
@@ -37,5 +34,3 @@ jobs:
           git add All.m3u
           git commit -m "Merge files into All.m3u"
           git push -f origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
