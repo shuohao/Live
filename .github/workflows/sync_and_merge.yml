@@ -18,8 +18,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name 'shuohao'
-          git config --global user.email 'shuohao@126.com'
+          git config --local user.name 'shuohao'
+          git config --local user.email 'shuohao@126.com'
 
       - name: Add upstream repository
         run: |
@@ -28,6 +28,11 @@ jobs:
           git checkout main
           git merge upstream/main
 
+      - name: Setup Git credentials
+        run: |
+          git config --local credential.helper store
+          echo "https://${{ secrets.GITHUB_TOKEN }}:@github.com" > ~/.git-credentials
+      
       - name: Merge files
         run: |
           bash merge_files.sh
