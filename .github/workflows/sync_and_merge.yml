@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           persist-credentials: false  # 取消自动保存认证
           fetch-depth: 0  # 获取完整的 git 历史记录
