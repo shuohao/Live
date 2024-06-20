@@ -1,7 +1,8 @@
 name: Sync and Merge
 
 on:
-  push:
+  schedule:
+    - cron: '0 * * * *'  # 每小时运行一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -16,6 +17,13 @@ jobs:
         run: |
           git config --local user.email "shuohao@126.com"
           git config --local user.name "shuohao"
+
+      - name: Add upstream repository
+        run: |
+          git remote add upstream https://github.com/YueChan/Live.git
+          git fetch upstream
+          git checkout main
+          git merge upstream/main --allow-unrelated-histories
 
       - name: Merge files
         run: |
