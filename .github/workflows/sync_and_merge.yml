@@ -38,4 +38,4 @@ jobs:
           git commit -m "Merge files into All.m3u"
           git -c credential.helper= push origin refs/heads/main:main
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
