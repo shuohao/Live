@@ -32,5 +32,5 @@ jobs:
       - name: Commit and push changes
         run: |
           git add All.m3u
-          git commit --allow-empty -m "Merge files into All.m3u" 
-          git push -f origin main
+          git commit -m "Merge files into All.m3u" 
+          (git push -f origin main) || true
