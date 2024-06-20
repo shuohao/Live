@@ -18,8 +18,8 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "shuohao@126.com"
+          git config --local user.name "shuohao"
 
       - name: Add upstream repository
         run: |
@@ -36,4 +36,6 @@ jobs:
         run: |
           git add All.m3u
           git commit -m "Merge files into All.m3u"
-          git push -f origin refs/heads/main:main
+          git push -f origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
