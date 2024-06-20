@@ -34,6 +34,7 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          git remote add origin git@github.com:shuohao/Live.git
           git add All.m3u
           git commit -m "Merge files into All.m3u"
           git -c credential.helper= push origin refs/heads/main:main
