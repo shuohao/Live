@@ -36,6 +36,7 @@ jobs:
         run: |
           git add All.m3u
           git commit -m "Merge files into All.m3u"
-          git -c credential.helper= push origin refs/heads/main:main
+          git remote set-url origin git@github.com:shuohao/Live.git
+          git push origin refs/heads/main:main
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
