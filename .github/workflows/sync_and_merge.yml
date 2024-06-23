@@ -22,7 +22,7 @@ jobs:
         run: |
           git remote add upstream https://github.com/YueChan/Live.git
           git fetch upstream
-          git pull --rebase upstream master
+          git pull --rebase upstream main
           git checkout main
           git merge upstream/main --allow-unrelated-histories
           
