@@ -20,11 +20,14 @@ jobs:
 
       - name: Add upstream repository
         run: |
-          git add .
           git remote add upstream https://github.com/YueChan/Live.git
           git fetch upstream
           git checkout main
-          git merge upstream/main --allow-unrelated-histories
+          git merge upstream/main -X theirs --allow-unrelated-histories || true
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "Auto-merged with upstream/main using theirs strategy"
+          fi
           
       - name: Merge files
         run: |
@@ -32,6 +35,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add .
+          git add -A
           git diff --exit-code || git commit -am "Merge files into All.m3u" 
           git push -f origin main
