@@ -25,7 +25,7 @@ jobs:
           git checkout main
           git merge upstream/main -X theirs --allow-unrelated-histories || true
           if [ -n "$(git status --porcelain)" ]; then
-            git add -A
+            git add .
             git commit -m "Auto-merged with upstream/main using theirs strategy"
           fi
           
@@ -35,6 +35,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git add -A
+          git add .
           git diff --exit-code || git commit -am "Merge files into All.m3u" 
           git push -f origin main
